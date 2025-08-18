@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Backup files created by install script
+*.backup.*
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Local environment files
+.env.local

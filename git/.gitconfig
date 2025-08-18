@@ -1,0 +1,9 @@
+[push]
+	autosetupremote = true
+[branch]
+	sort = committerdate
+[diff]
+	algorithm = histogram
+[user]
+	name = YOUR_NAME
+	email = YOUR_EMAIL

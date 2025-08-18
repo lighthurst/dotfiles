@@ -1,0 +1,12 @@
+{
+  "workbench.colorTheme": "Material Theme",
+  "editor.fontFamily": "Berkeley Mono, Operator Mono",
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.minimap.enabled": false,
+  "files.autoSave": "onFocusChange",
+  "update.showReleaseNotes": false,
+  "workbench.startupEditor": "none"
+}
