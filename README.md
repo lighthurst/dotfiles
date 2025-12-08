@@ -24,6 +24,24 @@ My personal development environment configuration files. Clean, focused, and pro
 - **Performance**: Histogram diff algorithm for better diffs
 - **Workflow**: Streamlined for daily development
 
+### 📝 Vim Configuration
+
+- **Theme**: Material.vim (dark, modern aesthetic)
+- **Indentation**: Consistent 2‑space indentation (including XML and plist)
+- **Search**: Smartcase, incremental search, highlighted results
+- **Clipboard**: Integrated system clipboard support when available
+- **UI**: Line numbers, cursorline, match highlighting, 256‑color support
+
+All Vim configuration lives in:
+
+```
+~/dotfiles/vim/.vimrc
+```
+
+A symlink is created automatically during installation.
+
+---
+
 ## 🚀 Quick Install
 
 ```bash
@@ -37,110 +55,147 @@ cd ~/dotfiles
 
 The install script will:
 
-- ✅ Install Oh My Zsh (if not present)
-- ✅ Backup your existing configurations
-- ✅ Create symlinks to the dotfiles
-- ✅ Set up VS Code settings and install extensions
-- ✅ Configure Git with your personal information
-- ✅ Install Homebrew (if on macOS and not present)
+- Install Oh My Zsh (if not present)
+- Back up any existing configuration files (shell, Git, Vim, VS Code)
+- Create symlinks for:
+  - .zshrc
+  - .zprofile
+  - .vimrc
+  - VS Code settings
+- Install vim-plug and automatically install all Vim plugins
+- Set up VS Code settings and install all extensions listed in vscode/extensions.txt
+- Configure Git with your name and email
+- Install Homebrew (if not already installed)
+
+---
 
 ## 📁 Directory Structure
 
 ```
 dotfiles/
 ├── vscode/
-│   ├── settings.json      # VS Code preferences
-│   └── extensions.txt     # List of extensions to install
+│   ├── settings.json
+│   └── extensions.txt
 ├── shell/
-│   ├── .zshrc            # Zsh configuration
-│   └── .zprofile         # Shell environment setup
+│   ├── .zshrc
+│   └── .zprofile
+├── vim/
+│   └── .vimrc
 ├── git/
-│   └── .gitconfig        # Git configuration (template)
+│   └── .gitconfig
 ├── scripts/
-│   └── install.sh        # Automated setup script
-└── README.md             # This file
+│   └── install.sh
+└── README.md
 ```
+
+---
 
 ## 🛠 Manual Setup
 
-If you prefer to set up manually:
-
 ### VS Code
 
-1. Copy `vscode/settings.json` to `~/Library/Application Support/Code/User/settings.json`
-2. Install extensions: `cat vscode/extensions.txt | xargs -L 1 code --install-extension`
+Copy settings:
 
-### Shell Configuration
+```bash
+cp vscode/settings.json "~/Library/Application Support/Code/User/settings.json"
+```
 
-1. Link shell files:
-   ```bash
-   ln -sf ~/dotfiles/shell/.zshrc ~/.zshrc
-   ln -sf ~/dotfiles/shell/.zprofile ~/.zprofile
-   ```
-2. Reload shell: `source ~/.zshrc`
+Install extensions:
 
-### Git Configuration
+```bash
+cat vscode/extensions.txt | xargs -L 1 code --install-extension
+```
 
-1. Copy and customize:
-   ```bash
-   cp git/.gitconfig ~/.gitconfig
-   # Edit ~/.gitconfig to add your name and email
-   ```
+### Shell
+
+```bash
+ln -sf ~/dotfiles/shell/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/shell/.zprofile ~/.zprofile
+source ~/.zshrc
+```
+
+### Vim
+
+```bash
+ln -sf ~/dotfiles/vim/.vimrc ~/.vimrc
+```
+
+### Git
+
+```bash
+cp git/.gitconfig ~/.gitconfig
+# Then edit ~/.gitconfig to add your name and email
+```
+
+---
 
 ## 🎯 Key Features
 
-### VS Code Highlights
+### VS Code
 
-- **Berkeley Mono font** for excellent readability
-- **Material Theme** for beautiful syntax highlighting
-- **Auto-formatting** with Prettier on save
-- **Minimal UI** with disabled minimap and startup editor
-- **Essential extensions** for modern web development
+- Berkeley Mono font
+- Material Theme
+- Auto-formatting with Prettier
+- Minimal UI
+- Essential web-dev extensions
 
-### Shell Enhancements
+### Shell
 
-- **Custom git alias** (`glp`) for beautiful commit logs
-- **Oh My Zsh** with git plugin for enhanced git workflow
-- **Homebrew integration** for package management
+- Custom git alias (`glp`)
+- Oh My Zsh git plugin
+- Homebrew environment integration
 
-### Git Workflow
+### Vim
 
-- **Auto-setup remote** branches for smoother workflow
-- **Branch sorting** by commit date for better organization
-- **Histogram diff** algorithm for clearer diffs
+- Material-inspired theme
+- 2‑space indentation
+- Clipboard integration
+- Clean UI defaults
+
+### Git
+
+- Auto‑setup remote branches
+- Branch sorting by commit date
+- Histogram diff algorithm
+
+---
 
 ## 🔄 Staying Updated
-
-To update your dotfiles:
 
 ```bash
 cd ~/dotfiles
 git pull origin main
-./scripts/install.sh  # Re-run to apply any new changes
+./scripts/install.sh
 ```
+
+---
 
 ## 🤝 Contributing
 
-Found a bug or have a suggestion? Feel free to:
+Feel free to:
 
-- Open an issue
-- Submit a pull request
-- Fork and customize for your own use
+- Open issues
+- Submit PRs
+- Fork and customize
+
+---
 
 ## 📝 Notes
 
-- **Backups**: The install script automatically backs up existing configurations
-- **Customization**: Feel free to fork and modify for your needs
-- **Compatibility**: Designed for macOS, may need adjustments for other systems
+- Install script automatically backs up existing files
+- Designed for macOS
+- Easy to extend and personalize
+
+---
 
 ## 🙏 Inspiration
 
-This setup is optimized for:
+Optimized for:
 
-- **Web development** (JavaScript, TypeScript, React, Next.js)
-- **Python development** with modern tooling
-- **Clean, distraction-free coding** environment
-- **Efficient git workflow** and version control
+- Web development (JS/TS/React/Next.js)
+- Python tooling
+- Clean, distraction‑free environments
+- Efficient Git workflows
 
 ---
 

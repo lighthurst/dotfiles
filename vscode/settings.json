@@ -1,12 +1,14 @@
 {
   "workbench.colorTheme": "Material Theme",
-  "editor.fontFamily": "Berkeley Mono, Operator Mono",
-  "editor.wordWrap": "wordWrapColumn",
-  "editor.tabSize": 2,
-  "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "Berkeley Mono, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 100,
   "files.autoSave": "onFocusChange",
   "update.showReleaseNotes": false,
+  "workbench.editor.enablePreview": false,
   "workbench.startupEditor": "none"
 }

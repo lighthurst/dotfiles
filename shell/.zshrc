@@ -1,40 +1,83 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# ============================================================
+# Oh My Zsh core setup
+# ============================================================
 
-# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Prompt theme (change anytime: bira, half-life, af-magic, etc.)
 ZSH_THEME="robbyrussell"
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# ------------------------------------------------------------
+# Zsh / Oh My Zsh options (must be set before sourcing OMZ)
+# ------------------------------------------------------------
 
-source $ZSH/oh-my-zsh.sh
+# Treat hyphens and underscores as equivalent during completion.
+HYPHEN_INSENSITIVE="true"
 
-# User configuration
+# Auto-correct mistyped commands (disable if it feels annoying).
+ENABLE_CORRECTION="true"
 
-# Preferred editor for local and remote sessions
+# Remind to update Oh My Zsh occasionally (not auto-update).
+zstyle ':omz:update' mode 'reminder'
+zstyle ':omz:update' frequency 13
+
+# Speed up git prompt for huge repos (optional).
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Plugins: keep list short for fast startup.
+plugins=(
+  git
+)
+
+# Load Oh My Zsh.
+source "$ZSH/oh-my-zsh.sh"
+
+# ============================================================
+# Environment
+# ============================================================
+
+# Prefer Homebrew tools over system binaries (Apple Silicon),
+# but add paths only if they are not already present.
+if [[ ":$PATH:" != *":/opt/homebrew/bin:"* ]]; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+fi
+
+# Keep PATH entries unique (zsh treats $path as an array).
+typeset -U path PATH
+
+# Default editor for CLI tools.
+export EDITOR="vim"
+export VISUAL="vim"
+
+# If later you prefer neovim locally but vim on SSH hosts:
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
+#   export VISUAL='vim'
 # else
 #   export EDITOR='nvim'
+#   export VISUAL='nvim'
 # fi
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
+# Optional: set locale explicitly.
+# export LANG="en_US.UTF-8"
 
-# Custom aliases
+# Optional: show timestamps in `history`.
+# HIST_STAMPS="yyyy-mm-dd"
+
+# ============================================================
+# Aliases
+# ============================================================
+
+# Compact colored git log with author plus relative time.
 alias glp='git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s"'
+
+# Example convenience aliases:
+# alias zshconfig="vim ~/.zshrc"
+# alias ohmyzsh="vim ~/.oh-my-zsh"
+
+# ============================================================
+# Machine-specific overrides (not tracked in dotfiles repo)
+# ============================================================
+# if [[ -f "$HOME/.zshrc.local" ]]; then
+#   source "$HOME/.zshrc.local"
+# fi
