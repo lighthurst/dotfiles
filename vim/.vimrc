@@ -9,7 +9,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Material colorscheme for Vim
-Plug 'kaicataldo/material.vim'
+Plug 'hzchirs/vim-material'
 
 call plug#end()
 
@@ -66,16 +66,21 @@ set clipboard=unnamed
 " ============================================================
 set t_Co=256                      " 256-color support
 
+" Material theme options:
+"   default / darker / palenight / ocean
+let g:material_theme_style = 'darker'
+
 if has("termguicolors")
   set termguicolors               " full truecolor (Warp supports this)
 endif
 
 set background=dark               " optimize themes for dark terminals
 
-" Material theme options:
-"   default / darker / palenight / ocean
-let g:material_theme_style = 'darker'
-colorscheme material
+try
+  colorscheme vim-material
+catch /^Vim\%((\a\+)\)\=:E185/
+  " Material not installed yet, skip without failing
+endtry
 
 " ============================================================
 " Misc quality of life
