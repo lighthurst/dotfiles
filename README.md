@@ -26,7 +26,7 @@ My personal development environment configuration files. Clean, focused, and pro
 
 ### 📝 Vim Configuration
 
-- **Theme**: Material.vim (dark, modern aesthetic)
+- **Theme**: vim-material (dark, modern aesthetic)
 - **Indentation**: Consistent 2‑space indentation (including XML and plist)
 - **Search**: Smartcase, incremental search, highlighted results
 - **Clipboard**: Integrated system clipboard support when available
@@ -46,7 +46,7 @@ A symlink is created automatically during installation.
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
+git clone https://github.com/lighthurst/dotfiles.git ~/dotfiles
 
 # Run the install script
 cd ~/dotfiles
