@@ -1,9 +1,18 @@
+# Core formatting & linting
 dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+
+# Git
 eamodio.gitlens
+
+# Theme & icons
 equinusocio.vsc-material-theme
 equinusocio.vsc-material-theme-icons
-esbenp.prettier-vscode
-ms-python.debugpy
+
+# Python
 ms-python.python
 ms-python.vscode-pylance
-ms-vscode.cpptools
+ms-python.debugpy
+
+# YAML
+redhat.vscode-yaml
