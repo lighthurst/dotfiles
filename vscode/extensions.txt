@@ -16,3 +16,6 @@ ms-python.debugpy
 
 # YAML
 redhat.vscode-yaml
+
+# Shell
+foxundermoon.shell-format

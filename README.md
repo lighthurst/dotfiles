@@ -11,6 +11,33 @@ My personal development environment configuration files. Clean, focused, and pro
 - **Features**: Auto-save, format-on-save, no minimap for distraction-free coding
 - **Extensions**: Curated selection for web development and Python
 
+### 🐚 Shell Script Formatting (spaces vs tabs)
+
+Shell scripts in this repo are formatted using shfmt with spaces (2-space indentation),
+not tabs.
+
+VS Code is configured to use the Shell Script Formatter extension together with shfmt
+to enforce this.
+
+If formatting behaves unexpectedly:
+
+- ensure shfmt is installed (`brew install shfmt`)
+- verify the shell-format extension version is compatible
+  (version 7.2.2 is known to work reliably)
+
+Relevant VS Code settings:
+
+```json
+"[shellscript]": {
+  "editor.defaultFormatter": "foxundermoon.shell-format",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true
+},
+"shellformat.path": "/opt/homebrew/bin/shfmt",
+"shellformat.useEditorConfig": false,
+"shellformat.flag": "-i 2"
+```
+
 ### 🐚 Shell Setup (Zsh + Oh My Zsh)
 
 - **Theme**: Robbyrussell (clean and fast)

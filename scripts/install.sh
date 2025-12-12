@@ -16,7 +16,7 @@ NC='\033[0m'
 # Helper UI functions
 print_success() { echo -e "${GREEN}✓${NC} $1"; }
 print_warning() { echo -e "${YELLOW}⚠${NC} $1"; }
-print_error()   { echo -e "${RED}✗${NC} $1"; }
+print_error() { echo -e "${RED}✗${NC} $1"; }
 
 # Resolve repo root
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -26,21 +26,21 @@ echo "📁 Dotfiles directory: $DOTFILES_DIR"
 # Backup helper — handles files OR symlinks safely
 #
 backup_file() {
-    if [ -e "$1" ] || [ -L "$1" ]; then
-        cp -L "$1" "$1.backup.$(date +%Y%m%d_%H%M%S)"
-        print_warning "Backed up existing $1"
-    fi
+  if [ -e "$1" ] || [ -L "$1" ]; then
+    cp -L "$1" "$1.backup.$(date +%Y%m%d_%H%M%S)"
+    print_warning "Backed up existing $1"
+  fi
 }
 
 #
 # Install Oh My Zsh (unattended)
 #
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    echo "📦 Installing Oh My Zsh..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    print_success "Oh My Zsh installed"
+  echo "📦 Installing Oh My Zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  print_success "Oh My Zsh installed"
 else
-    print_warning "Oh My Zsh already installed"
+  print_warning "Oh My Zsh already installed"
 fi
 
 #
@@ -59,17 +59,17 @@ print_success "Shell configuration linked"
 # Git configuration
 #
 if [ ! -f "$HOME/.gitconfig" ]; then
-    echo "⚙️ Setting up Git configuration..."
-    read -p "Enter your full name: " git_name
-    read -p "Enter your email address: " git_email
+  echo "⚙️ Setting up Git configuration..."
+  read -p "Enter your full name: " git_name
+  read -p "Enter your email address: " git_email
 
-    cp "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
-    sed -i.bak "s/YOUR_NAME/$git_name/g" "$HOME/.gitconfig"
-    sed -i.bak "s/YOUR_EMAIL/$git_email/g" "$HOME/.gitconfig"
-    rm "$HOME/.gitconfig.bak"
-    print_success "Git configuration set up"
+  cp "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+  sed -i.bak "s/YOUR_NAME/$git_name/g" "$HOME/.gitconfig"
+  sed -i.bak "s/YOUR_EMAIL/$git_email/g" "$HOME/.gitconfig"
+  rm "$HOME/.gitconfig.bak"
+  print_success "Git configuration set up"
 else
-    print_warning "Git configuration already exists, skipping"
+  print_warning "Git configuration already exists, skipping"
 fi
 
 #
@@ -78,41 +78,41 @@ fi
 VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
 
 if [ -d "$VSCODE_USER_DIR" ]; then
-    echo "⚙️ Setting up VS Code configuration..."
-    backup_file "$VSCODE_USER_DIR/settings.json"
-    if ! cmp -s "$DOTFILES_DIR/vscode/settings.json" "$VSCODE_USER_DIR/settings.json"; then
+  echo "⚙️ Setting up VS Code configuration..."
+  backup_file "$VSCODE_USER_DIR/settings.json"
+  if ! cmp -s "$DOTFILES_DIR/vscode/settings.json" "$VSCODE_USER_DIR/settings.json"; then
     cp "$DOTFILES_DIR/vscode/settings.json" "$VSCODE_USER_DIR/settings.json"
     print_success "VS Code settings updated"
-    else
+  else
     print_warning "VS Code settings already up to date"
-    fi
+  fi
 
-    if command -v code &> /dev/null; then
-        echo "📦 Installing VS Code extensions..."
-        while IFS= read -r ext; do
-        # skip blank lines and comments
-        ext="${ext%%#*}"
-        ext="${ext#"${ext%%[![:space:]]*}"}"
-        ext="${ext%"${ext##*[![:space:]]}"}"
-        [[ -z "$ext" ]] && continue
+  if command -v code &>/dev/null; then
+    echo "📦 Installing VS Code extensions..."
+    while IFS= read -r ext; do
+      # skip blank lines and comments
+      ext="${ext%%#*}"
+      ext="${ext#"${ext%%[![:space:]]*}"}"
+      ext="${ext%"${ext##*[![:space:]]}"}"
+      [[ -z "$ext" ]] && continue
 
-        code --install-extension "$ext" --force
-        done < "$DOTFILES_DIR/vscode/extensions.txt"
-        print_success "VS Code extensions installed"
-    else
-        print_warning "VS Code CLI not found — skipping extension install"
-    fi
+      code --install-extension "$ext" --force
+    done <"$DOTFILES_DIR/vscode/extensions.txt"
+    print_success "VS Code extensions installed"
+  else
+    print_warning "VS Code CLI not found — skipping extension install"
+  fi
 else
-    print_warning "VS Code not detected — skipping VS Code configuration"
+  print_warning "VS Code not detected — skipping VS Code configuration"
 fi
 
 #
 # Homebrew installation
 #
-if [[ "$OSTYPE" == "darwin"* ]] && ! command -v brew &> /dev/null; then
-    echo "📦 Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    print_success "Homebrew installed"
+if [[ "$OSTYPE" == "darwin"* ]] && ! command -v brew &>/dev/null; then
+  echo "📦 Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  print_success "Homebrew installed"
 fi
 
 #
@@ -127,12 +127,12 @@ print_success "Vim configuration linked"
 
 # Install vim-plug if missing
 if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
-    echo "📦 Installing vim-plug plugin manager..."
-    curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    print_success "vim-plug installed"
+  echo "📦 Installing vim-plug plugin manager..."
+  curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  print_success "vim-plug installed"
 else
-    print_warning "vim-plug already installed"
+  print_warning "vim-plug already installed"
 fi
 
 # Install Vim plugins

@@ -10,6 +10,14 @@
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 100,
   "files.autoSave": "onFocusChange",
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "shellformat.path": "/opt/homebrew/bin/shfmt",
+  "shellformat.useEditorConfig": false,
+  "shellformat.flag": "-i 2 -ci -sr",
   "terminal.integrated.fontFamily": "Berkeley Mono, Operator Mono, Menlo, Monaco, 'Courier New', monospace",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.lineHeight": 1.2,
