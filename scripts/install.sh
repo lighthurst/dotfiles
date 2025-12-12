@@ -80,13 +80,23 @@ VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
 if [ -d "$VSCODE_USER_DIR" ]; then
     echo "⚙️ Setting up VS Code configuration..."
     backup_file "$VSCODE_USER_DIR/settings.json"
+    if ! cmp -s "$DOTFILES_DIR/vscode/settings.json" "$VSCODE_USER_DIR/settings.json"; then
     cp "$DOTFILES_DIR/vscode/settings.json" "$VSCODE_USER_DIR/settings.json"
-    print_success "VS Code settings configured"
+    print_success "VS Code settings updated"
+    else
+    print_warning "VS Code settings already up to date"
+    fi
 
     if command -v code &> /dev/null; then
         echo "📦 Installing VS Code extensions..."
         while IFS= read -r ext; do
-            code --install-extension "$ext" --force
+        # skip blank lines and comments
+        ext="${ext%%#*}"
+        ext="${ext#"${ext%%[![:space:]]*}"}"
+        ext="${ext%"${ext##*[![:space:]]}"}"
+        [[ -z "$ext" ]] && continue
+
+        code --install-extension "$ext" --force
         done < "$DOTFILES_DIR/vscode/extensions.txt"
         print_success "VS Code extensions installed"
     else
