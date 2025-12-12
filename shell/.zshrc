@@ -36,12 +36,6 @@ source "$ZSH/oh-my-zsh.sh"
 # Environment
 # ============================================================
 
-# Prefer Homebrew tools over system binaries (Apple Silicon),
-# but add paths only if they are not already present.
-if [[ ":$PATH:" != *":/opt/homebrew/bin:"* ]]; then
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-fi
-
 # Keep PATH entries unique (zsh treats $path as an array).
 typeset -U path PATH
 
