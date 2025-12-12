@@ -87,7 +87,7 @@ if [ -d "$VSCODE_USER_DIR" ]; then
     print_warning "VS Code settings already up to date"
   fi
 
-  if command -v code &>/dev/null; then
+  if command -v code &> /dev/null; then
     echo "📦 Installing VS Code extensions..."
     while IFS= read -r ext; do
       # skip blank lines and comments
@@ -97,7 +97,7 @@ if [ -d "$VSCODE_USER_DIR" ]; then
       [[ -z "$ext" ]] && continue
 
       code --install-extension "$ext" --force
-    done <"$DOTFILES_DIR/vscode/extensions.txt"
+    done < "$DOTFILES_DIR/vscode/extensions.txt"
     print_success "VS Code extensions installed"
   else
     print_warning "VS Code CLI not found — skipping extension install"
@@ -109,7 +109,7 @@ fi
 #
 # Homebrew installation
 #
-if [[ "$OSTYPE" == "darwin"* ]] && ! command -v brew &>/dev/null; then
+if [[ "$OSTYPE" == "darwin"* ]] && ! command -v brew &> /dev/null; then
   echo "📦 Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   print_success "Homebrew installed"
