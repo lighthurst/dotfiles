@@ -72,6 +72,6 @@ alias glp='git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %
 # ============================================================
 # Machine-specific overrides (not tracked in dotfiles repo)
 # ============================================================
-# if [[ -f "$HOME/.zshrc.local" ]]; then
-#   source "$HOME/.zshrc.local"
-# fi
+if [[ -f "$HOME/.zshrc.local" ]]; then
+  source "$HOME/.zshrc.local"
+fi
