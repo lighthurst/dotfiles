@@ -65,6 +65,9 @@ export VISUAL="vim"
 # Compact colored git log with author plus relative time.
 alias glp='git log --pretty=format:"%C(yellow)%h%Creset - %C(green)%an%Creset, %ar : %s"'
 
+# Update dotfiles from remote and re-run install.
+alias dotup="~/dotfiles/scripts/update.sh"
+
 # Example convenience aliases:
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"
