@@ -1,11 +1,18 @@
 #!/bin/bash
 
-# Aaron's Dotfiles Installation Script
+# Dotfiles Installation Script
 # Sets up a new development environment with preferred configurations
 
 set -e
 
-echo "🚀 Setting up Aaron's development environment..."
+# Get user's name for personalized messages
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  USER_NAME=$(id -F 2>/dev/null || echo "$USER")
+else
+  USER_NAME=$(getent passwd "$USER" 2>/dev/null | cut -d: -f5 | cut -d, -f1 || echo "$USER")
+fi
+
+echo "🚀 Setting up ${USER_NAME}'s development environment..."
 
 # Colors for output
 RED='\033[0;31m'
