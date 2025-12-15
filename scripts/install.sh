@@ -115,6 +115,12 @@ if [[ "$OSTYPE" == "darwin"* ]] && ! command -v brew &> /dev/null; then
   print_success "Homebrew installed"
 fi
 
+if command -v brew &> /dev/null && [ -f "$DOTFILES_DIR/Brewfile" ]; then
+  echo "📦 Installing Homebrew packages from Brewfile..."
+  brew bundle --file="$DOTFILES_DIR/Brewfile"
+  print_success "Homebrew packages installed"
+fi
+
 #
 # Vim configuration
 #
