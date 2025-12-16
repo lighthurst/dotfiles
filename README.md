@@ -45,6 +45,14 @@ Relevant VS Code settings:
 - **Custom Aliases**: Enhanced git log formatting
 - **Homebrew**: Properly configured shell environment
 
+### 🍺 CLI Tools (Brewfile)
+
+- **fd**: Fast file finder (find alternative)
+- **fzf**: Fuzzy finder
+- **jq**: JSON processor
+- **ripgrep**: Fast grep (rg)
+- **shfmt**: Shell script formatter
+
 ### 🔧 Git Configuration
 
 - **Modern Features**: Auto-setup remote branches, sort by commit date
@@ -93,6 +101,7 @@ The install script will:
 - Set up VS Code settings and install all extensions listed in vscode/extensions.txt
 - Configure Git with your name and email
 - Install Homebrew (if not already installed)
+- Install CLI tools from Brewfile
 
 ---
 
@@ -100,6 +109,7 @@ The install script will:
 
 ```
 dotfiles/
+├── Brewfile
 ├── vscode/
 │   ├── settings.json
 │   └── extensions.txt
