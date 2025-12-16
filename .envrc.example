@@ -1,0 +1,14 @@
+# Example .envrc for direnv + 1Password CLI
+# Copy to ~/.envrc or your project directory and customize.
+#
+# Usage:
+#   cp .envrc.example ~/myproject/.envrc
+#   cd ~/myproject
+#   direnv allow
+#
+# Secrets are fetched from 1Password at shell load time.
+# Format: op://Vault/Item/Field
+
+export GITHUB_TOKEN=$(op read "op://Dev/GitHub/token")
+export AWS_ACCESS_KEY_ID=$(op read "op://Dev/AWS/access_key_id")
+export AWS_SECRET_ACCESS_KEY=$(op read "op://Dev/AWS/secret_access_key")

@@ -17,7 +17,7 @@ My personal development environment configuration files. Clean, focused, and pro
 - **Plugins**: Git integration
 - **Custom Aliases**: Enhanced git log formatting
 - **Homebrew**: Properly configured shell environment
-- **direnv**: Auto-loads `.envrc` files per directory (if installed)
+- **direnv**: Auto-loads `.envrc` files per directory (if installed, see `.envrc.example`)
 
 ### 🍺 CLI Tools (Brewfile)
 
@@ -84,6 +84,7 @@ The install script will:
 
 ```
 dotfiles/
+├── .envrc.example
 ├── Brewfile
 ├── vscode/
 │   ├── settings.json
