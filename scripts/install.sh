@@ -30,12 +30,21 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 echo "📁 Dotfiles directory: $DOTFILES_DIR"
 
 #
-# Backup helper — handles files OR symlinks safely
+# Backup helper — only backs up if target differs from source
 #
-backup_file() {
-  if [ -e "$1" ] || [ -L "$1" ]; then
-    cp -L "$1" "$1.backup.$(date +%Y%m%d_%H%M%S)"
-    print_warning "Backed up existing $1"
+backup_if_different() {
+  local target="$1"
+  local source="$2"
+  if [ -e "$target" ] || [ -L "$target" ]; then
+    # For symlinks, check if already pointing to correct source
+    if [ -L "$target" ] && [ "$(readlink "$target")" = "$source" ]; then
+      return 0
+    fi
+    # For files, check if content differs
+    if ! cmp -s "$target" "$source" 2>/dev/null; then
+      cp -L "$target" "$target.backup.$(date +%Y%m%d_%H%M%S)"
+      print_warning "Backed up existing $target"
+    fi
   fi
 }
 
@@ -54,8 +63,8 @@ fi
 # Shell configuration
 #
 echo "🔗 Creating symlinks for shell configuration..."
-backup_file "$HOME/.zshrc"
-backup_file "$HOME/.zprofile"
+backup_if_different "$HOME/.zshrc" "$DOTFILES_DIR/shell/.zshrc"
+backup_if_different "$HOME/.zprofile" "$DOTFILES_DIR/shell/.zprofile"
 
 ln -sf "$DOTFILES_DIR/shell/.zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/shell/.zprofile" "$HOME/.zprofile"
@@ -86,8 +95,8 @@ VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
 
 if [ -d "$VSCODE_USER_DIR" ]; then
   echo "⚙️ Setting up VS Code configuration..."
-  backup_file "$VSCODE_USER_DIR/settings.json"
   if ! cmp -s "$DOTFILES_DIR/vscode/settings.json" "$VSCODE_USER_DIR/settings.json"; then
+    backup_if_different "$VSCODE_USER_DIR/settings.json" "$DOTFILES_DIR/vscode/settings.json"
     cp "$DOTFILES_DIR/vscode/settings.json" "$VSCODE_USER_DIR/settings.json"
     print_success "VS Code settings updated"
   else
@@ -133,7 +142,7 @@ fi
 #
 echo "🔗 Linking Vim configuration..."
 
-backup_file "$HOME/.vimrc"
+backup_if_different "$HOME/.vimrc" "$DOTFILES_DIR/vim/.vimrc"
 
 ln -sf "$DOTFILES_DIR/vim/.vimrc" "$HOME/.vimrc"
 print_success "Vim configuration linked"
