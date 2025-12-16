@@ -1,0 +1,10 @@
+# macOS system files
+.DS_Store
+
+# direnv secrets
+.envrc
+
+# Editor temp files
+*.swp
+*.swo
+*~

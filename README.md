@@ -73,6 +73,7 @@ The install script will:
 - Install vim-plug and automatically install all Vim plugins
 - Set up VS Code settings and install all extensions listed in vscode/extensions.txt
 - Configure Git with your name and email
+- Set up global gitignore (merges with existing, won't overwrite)
 - Install Homebrew (if not already installed)
 - Install CLI tools from Brewfile
 
@@ -92,7 +93,8 @@ dotfiles/
 ├── vim/
 │   └── .vimrc
 ├── git/
-│   └── .gitconfig
+│   ├── .gitconfig
+│   └── gitignore_global
 ├── scripts/
 │   ├── install.sh
 │   └── update.sh

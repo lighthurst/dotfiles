@@ -155,6 +155,23 @@ vim +PlugInstall +qall || print_warning "Vim plugin installation skipped (non-fa
 print_success "Vim setup complete"
 
 #
+# Global gitignore
+#
+echo "🔗 Setting up global gitignore..."
+GLOBAL_IGNORE="$HOME/.gitignore_global"
+DOTFILES_IGNORE="$DOTFILES_DIR/git/gitignore_global"
+
+touch "$GLOBAL_IGNORE"
+
+while IFS= read -r line || [[ -n "$line" ]]; do
+  [[ -z "$line" || "$line" =~ ^# ]] && continue
+  grep -qxF "$line" "$GLOBAL_IGNORE" || echo "$line" >> "$GLOBAL_IGNORE"
+done < "$DOTFILES_IGNORE"
+
+git config --global core.excludesfile "$GLOBAL_IGNORE"
+print_success "Global gitignore configured"
+
+#
 # Final messages
 #
 echo ""
