@@ -58,6 +58,11 @@ export VISUAL="vim"
 # Optional: show timestamps in `history`.
 # HIST_STAMPS="yyyy-mm-dd"
 
+# direnv: auto-load .envrc files per directory
+if command -v direnv &> /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
 # ============================================================
 # Aliases
 # ============================================================
