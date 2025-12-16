@@ -11,33 +11,6 @@ My personal development environment configuration files. Clean, focused, and pro
 - **Features**: Auto-save, format-on-save, no minimap for distraction-free coding
 - **Extensions**: Curated selection for web development and Python
 
-### 🐚 Shell Script Formatting (spaces vs tabs)
-
-Shell scripts in this repo are formatted using shfmt with spaces (2-space indentation),
-not tabs.
-
-VS Code is configured to use the Shell Script Formatter extension together with shfmt
-to enforce this.
-
-If formatting behaves unexpectedly:
-
-- ensure shfmt is installed (`brew install shfmt`)
-- verify the shell-format extension version is compatible
-  (version 7.2.2 is known to work reliably)
-
-Relevant VS Code settings:
-
-```json
-"[shellscript]": {
-  "editor.defaultFormatter": "foxundermoon.shell-format",
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true
-},
-"shellformat.path": "/opt/homebrew/bin/shfmt",
-"shellformat.useEditorConfig": false,
-"shellformat.flag": "-i 2"
-```
-
 ### 🐚 Shell Setup (Zsh + Oh My Zsh)
 
 - **Theme**: Robbyrussell (clean and fast)
@@ -165,36 +138,11 @@ cp git/.gitconfig ~/.gitconfig
 # Then edit ~/.gitconfig to add your name and email
 ```
 
----
+### CLI Tools
 
-## 🎯 Key Features
-
-### VS Code
-
-- Berkeley Mono font
-- Material Theme
-- Auto-formatting with Prettier
-- Minimal UI
-- Essential web-dev extensions
-
-### Shell
-
-- Custom git alias (`glp`)
-- Oh My Zsh git plugin
-- Homebrew environment integration
-
-### Vim
-
-- Material-inspired theme
-- 2‑space indentation
-- Clipboard integration
-- Clean UI defaults
-
-### Git
-
-- Auto‑setup remote branches
-- Branch sorting by commit date
-- Histogram diff algorithm
+```bash
+brew bundle --file=~/dotfiles/Brewfile
+```
 
 ---
 
@@ -225,6 +173,28 @@ Feel free to:
 ---
 
 ## 🛠 Troubleshooting
+
+**Shell script formatting (spaces vs tabs)**
+
+Shell scripts in this repo use shfmt with 2-space indentation. VS Code is configured
+to use the Shell Script Formatter extension to enforce this.
+
+If formatting behaves unexpectedly:
+
+- Ensure shfmt is installed (`brew install shfmt`)
+- Verify shell-format extension version is compatible (v7.2.2 works reliably)
+
+Relevant VS Code settings:
+
+```json
+"[shellscript]": {
+  "editor.defaultFormatter": "foxundermoon.shell-format",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true
+},
+"shellformat.path": "/opt/homebrew/bin/shfmt",
+"shellformat.flag": "-i 2"
+```
 
 **`brew bundle` fails with "could not symlink"**
 
