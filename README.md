@@ -207,6 +207,20 @@ Feel free to:
 
 ---
 
+## 🛠 Troubleshooting
+
+**`brew bundle` fails with "could not symlink"**
+
+If a formula (e.g., shfmt) conflicts with an existing binary:
+
+```bash
+brew link --overwrite <formula>
+```
+
+This can happen if a VS Code extension or other tool installed its own copy first.
+
+---
+
 ## 📝 Notes
 
 - Install script automatically backs up existing files
