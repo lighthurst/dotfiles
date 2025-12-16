@@ -38,12 +38,15 @@ backup_if_different() {
   if [ -e "$target" ] || [ -L "$target" ]; then
     # For symlinks, check if already pointing to correct source
     if [ -L "$target" ] && [ "$(readlink "$target")" = "$source" ]; then
+      print_success "Skipped backup of $target (symlink already correct)"
       return 0
     fi
     # For files, check if content differs
     if ! cmp -s "$target" "$source" 2>/dev/null; then
       cp -L "$target" "$target.backup.$(date +%Y%m%d_%H%M%S)"
       print_warning "Backed up existing $target"
+    else
+      print_success "Skipped backup of $target (already matches source)"
     fi
   fi
 }
