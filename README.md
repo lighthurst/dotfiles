@@ -111,7 +111,8 @@ dotfiles/
 ├── git/
 │   └── .gitconfig
 ├── scripts/
-│   └── install.sh
+│   ├── install.sh
+│   └── update.sh
 └── README.md
 ```
 
@@ -189,10 +190,16 @@ cp git/.gitconfig ~/.gitconfig
 
 ## 🔄 Staying Updated
 
+Use the update script to pull the latest changes and re-run installation:
+
 ```bash
-cd ~/dotfiles
-git pull origin main
-./scripts/install.sh
+./scripts/update.sh
+```
+
+Or use the `dotup` alias (available after installation):
+
+```bash
+dotup
 ```
 
 ---
