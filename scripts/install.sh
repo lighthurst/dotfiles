@@ -87,6 +87,8 @@ if [ -S "$OP_AGENT_SOCK" ]; then
   backup_if_different "$HOME/.ssh/config" "$DOTFILES_DIR/ssh/config"
   ln -sf "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
   chmod 600 "$HOME/.ssh/config"
+  touch "$HOME/.ssh/config.local"
+  chmod 600 "$HOME/.ssh/config.local"
 
   print_success "SSH configuration linked (using 1Password SSH Agent)"
 else

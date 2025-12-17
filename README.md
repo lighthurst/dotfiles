@@ -100,7 +100,8 @@ dotfiles/
 │   ├── .zshrc
 │   └── .zprofile
 ├── ssh/
-│   └── config
+│   ├── config
+│   └── config.local.example
 ├── vim/
 │   └── .vimrc
 ├── git/
@@ -145,9 +146,10 @@ source ~/.zshrc
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 ln -sf ~/dotfiles/ssh/config ~/.ssh/config
 chmod 600 ~/.ssh/config
+touch ~/.ssh/config.local && chmod 600 ~/.ssh/config.local
 ```
 
-Requires [1Password SSH Agent](https://developer.1password.com/docs/ssh/get-started) to be enabled.
+Requires [1Password SSH Agent](https://developer.1password.com/docs/ssh/get-started) to be enabled. Add private host configurations to `~/.ssh/config.local`.
 
 ### Vim
 
