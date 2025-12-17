@@ -1,0 +1,34 @@
+# Minimal gitconfig for remote servers
+# Run after copying:
+#   git config --global user.name "Your Name"
+#   git config --global user.email "you@example.com"
+
+[init]
+  defaultBranch = main
+
+[fetch]
+  prune = true
+
+[pull]
+  rebase = true
+
+[push]
+  autosetupremote = true
+
+[branch]
+  sort = committerdate
+
+[diff]
+  algorithm = histogram
+
+[merge]
+  conflictstyle = diff3
+
+[rebase]
+  autostash = true
+
+[color]
+  ui = auto
+
+[core]
+  editor = vim

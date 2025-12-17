@@ -111,6 +111,10 @@ dotfiles/
 ├── scripts/
 │   ├── install.sh
 │   └── update.sh
+├── server/
+│   ├── .vimrc
+│   ├── .gitconfig
+│   └── setup.sh
 └── README.md
 ```
 
@@ -186,6 +190,31 @@ Or use the `dotup` alias (available after installation):
 ```bash
 dotup
 ```
+
+---
+
+## 🖥 Remote Server Setup
+
+Minimal configs for remote servers (Ubuntu, AWS, etc.) without macOS dependencies.
+
+**One-liner install:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lighthurst/dotfiles/main/server/setup.sh | bash
+```
+
+**Or manually:**
+
+```bash
+scp ~/dotfiles/server/.vimrc your-server:~/.vimrc
+scp ~/dotfiles/server/.gitconfig your-server:~/.gitconfig
+```
+
+The setup script will prompt for your git name and email.
+
+The server configs include:
+- Vim: Core settings, no plugins required
+- Git: Modern defaults (rebase on pull, histogram diff, branch sort)
 
 ---
 
