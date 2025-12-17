@@ -75,6 +75,25 @@ ln -sf "$DOTFILES_DIR/shell/.zprofile" "$HOME/.zprofile"
 print_success "Shell configuration linked"
 
 #
+# SSH configuration (1Password SSH Agent)
+#
+OP_AGENT_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+if [ -S "$OP_AGENT_SOCK" ]; then
+  echo "🔗 Setting up SSH configuration..."
+  mkdir -p "$HOME/.ssh"
+  chmod 700 "$HOME/.ssh"
+
+  backup_if_different "$HOME/.ssh/config" "$DOTFILES_DIR/ssh/config"
+  ln -sf "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
+  chmod 600 "$HOME/.ssh/config"
+
+  print_success "SSH configuration linked (using 1Password SSH Agent)"
+else
+  print_warning "1Password SSH Agent not detected — skipping SSH config"
+fi
+
+#
 # Git configuration
 #
 if [ ! -f "$HOME/.gitconfig" ]; then

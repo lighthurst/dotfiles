@@ -27,6 +27,12 @@ My personal development environment configuration files. Clean, focused, and pro
 - **ripgrep**: Fast grep (rg)
 - **shfmt**: Shell script formatter
 
+### 🔐 SSH Configuration
+
+- **1Password SSH Agent**: Keys managed by 1Password, no private keys on disk
+- **Touch ID**: Biometric authentication for SSH operations
+- **Requires**: [1Password SSH Agent](https://developer.1password.com/docs/ssh/get-started) enabled
+
 ### 🔧 Git Configuration
 
 - **Modern Features**: Auto-setup remote branches, sort by commit date
@@ -69,6 +75,7 @@ The install script will:
 - Create symlinks for:
   - .zshrc
   - .zprofile
+  - .ssh/config
   - .vimrc
   - VS Code settings
 - Install vim-plug and automatically install all Vim plugins
@@ -92,6 +99,8 @@ dotfiles/
 ├── shell/
 │   ├── .zshrc
 │   └── .zprofile
+├── ssh/
+│   └── config
 ├── vim/
 │   └── .vimrc
 ├── git/
@@ -128,6 +137,16 @@ ln -sf ~/dotfiles/shell/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/shell/.zprofile ~/.zprofile
 source ~/.zshrc
 ```
+
+### SSH
+
+```bash
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+ln -sf ~/dotfiles/ssh/config ~/.ssh/config
+chmod 600 ~/.ssh/config
+```
+
+Requires [1Password SSH Agent](https://developer.1password.com/docs/ssh/get-started) to be enabled.
 
 ### Vim
 

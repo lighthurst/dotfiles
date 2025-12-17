@@ -1,0 +1,6 @@
+# SSH config using 1Password SSH Agent
+# Requires: 1Password with SSH Agent enabled
+# https://developer.1password.com/docs/ssh/get-started
+
+Host *
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
