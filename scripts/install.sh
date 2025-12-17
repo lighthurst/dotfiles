@@ -96,18 +96,24 @@ fi
 #
 # Git configuration
 #
-if [ ! -f "$HOME/.gitconfig" ]; then
-  echo "⚙️ Setting up Git configuration..."
+echo "🔗 Setting up Git configuration..."
+backup_if_different "$HOME/.gitconfig" "$DOTFILES_DIR/git/.gitconfig"
+ln -sf "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+print_success "Git configuration linked"
+
+if [ ! -f "$HOME/.gitconfig.local" ]; then
+  echo "⚙️ Creating local Git configuration..."
   read -p "Enter your full name: " git_name
   read -p "Enter your email address: " git_email
 
-  cp "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
-  sed -i.bak "s/YOUR_NAME/$git_name/g" "$HOME/.gitconfig"
-  sed -i.bak "s/YOUR_EMAIL/$git_email/g" "$HOME/.gitconfig"
-  rm "$HOME/.gitconfig.bak"
-  print_success "Git configuration set up"
+  cat > "$HOME/.gitconfig.local" <<EOF
+[user]
+  name = $git_name
+  email = $git_email
+EOF
+  print_success "Local Git configuration created at ~/.gitconfig.local"
 else
-  print_warning "Git configuration already exists, skipping"
+  print_warning "Local Git configuration already exists, skipping"
 fi
 
 #
@@ -199,7 +205,6 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   grep -qxF "$line" "$GLOBAL_IGNORE" || echo "$line" >> "$GLOBAL_IGNORE"
 done < "$DOTFILES_IGNORE"
 
-git config --global core.excludesfile "$GLOBAL_IGNORE"
 print_success "Global gitignore configured"
 
 #

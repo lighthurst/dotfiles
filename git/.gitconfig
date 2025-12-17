@@ -1,19 +1,33 @@
-[user]
-  name = YOUR_NAME
-  email = YOUR_EMAIL
+# Personal settings (name, email, signing key) in ~/.gitconfig.local
+[include]
+  path = ~/.gitconfig.local
+
+[core]
+  excludesfile = ~/.gitignore_global
+
 [init]
   defaultBranch = main
+
 [fetch]
   prune = true
+
 [pull]
   rebase = true
+
 [push]
   autosetupremote = true
+
 [branch]
   sort = committerdate
+
 [diff]
   algorithm = histogram
+
 [merge]
   conflictstyle = diff3
+
+[rebase]
+  autostash = true
+
 [color]
   ui = auto

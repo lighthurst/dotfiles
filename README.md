@@ -105,6 +105,7 @@ dotfiles/
 │   └── .vimrc
 ├── git/
 │   ├── .gitconfig
+│   ├── .gitconfig.local.example
 │   └── gitignore_global
 ├── scripts/
 │   ├── install.sh
@@ -157,8 +158,9 @@ ln -sf ~/dotfiles/vim/.vimrc ~/.vimrc
 ### Git
 
 ```bash
-cp git/.gitconfig ~/.gitconfig
-# Then edit ~/.gitconfig to add your name and email
+ln -sf ~/dotfiles/git/.gitconfig ~/.gitconfig
+cp git/.gitconfig.local.example ~/.gitconfig.local
+# Then edit ~/.gitconfig.local with your name and email
 ```
 
 ### CLI Tools
