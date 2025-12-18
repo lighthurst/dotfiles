@@ -88,3 +88,9 @@ alias dotup="~/dotfiles/scripts/update.sh"
 if [[ -f "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
 fi
+
+# Terraform autocomplete (only loads if terraform is installed)
+if command -v terraform &>/dev/null; then
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C "$(command -v terraform)" terraform
+fi
