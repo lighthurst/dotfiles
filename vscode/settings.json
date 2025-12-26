@@ -23,5 +23,12 @@
   "terminal.integrated.lineHeight": 1.2,
   "update.showReleaseNotes": false,
   "workbench.editor.enablePreview": false,
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    }
+  }
 }
