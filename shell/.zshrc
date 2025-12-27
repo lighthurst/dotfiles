@@ -68,6 +68,11 @@ if command -v fnm &> /dev/null; then
   eval "$(fnm env --use-on-cd)"
 fi
 
+# Rust/Cargo
+if [[ -f "$HOME/.cargo/env" ]]; then
+  . "$HOME/.cargo/env"
+fi
+
 # 1Password SSH Agent
 if [ -S "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock" ]; then
   export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
