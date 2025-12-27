@@ -10,6 +10,16 @@
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 100,
   "files.autoSave": "onFocusChange",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format",
     "editor.tabSize": 2,
@@ -23,12 +33,5 @@
   "terminal.integrated.lineHeight": 1.2,
   "update.showReleaseNotes": false,
   "workbench.editor.enablePreview": false,
-  "workbench.startupEditor": "none",
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.ruff": "explicit",
-      "source.organizeImports.ruff": "explicit"
-    }
-  }
+  "workbench.startupEditor": "none"
 }
