@@ -9,3 +9,8 @@ fi
 
 # Limit auto-update to once per day (default: 5 min)
 export HOMEBREW_AUTO_UPDATE_SECS=86400
+
+# Setting PATH for Python 3.12
+# The original version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
+export PATH
