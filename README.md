@@ -9,7 +9,7 @@ My personal development environment configuration files. Clean, focused, and pro
 - **Theme**: Material Theme with clean, modern aesthetics
 - **Font**: Berkeley Mono (with Operator Mono fallback)
 - **Features**: Auto-save, format-on-save, no minimap for distraction-free coding
-- **Extensions**: Curated selection for web development and Python
+- **Extensions**: Curated selection for web development, Python and Rust
 
 ### 🐚 Shell Setup (Zsh + Oh My Zsh)
 
