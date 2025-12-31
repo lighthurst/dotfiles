@@ -96,6 +96,7 @@ set splitright                    " vertical splits appear to the right
 " set mouse=a                     " uncomment to enable mouse support
 set textwidth=100                 " wrap at 100 columns (matches VS Code)
 set fixendofline                  " ensure files end with a newline
+set endofline                     " write the final newline
 
 " ============================================================
 " ALE (Linting + Formatting)
