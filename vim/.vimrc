@@ -106,6 +106,7 @@ let g:ale_linters = {
 \   'python': ['ruff'],
 \   'javascript': ['eslint'],
 \   'rust': ['analyzer'],
+\   'yaml': ['yamllint'],
 \}
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
@@ -113,6 +114,7 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \   'javascript': ['prettier'],
 \   'json': ['prettier'],
+\   'yaml': ['prettier'],
 \   'python': ['ruff', 'ruff_format'],
 \   'sh': ['shfmt'],
 \   'rust': ['rustfmt'],
