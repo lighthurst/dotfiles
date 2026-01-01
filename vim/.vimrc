@@ -11,6 +11,9 @@ call plug#begin('~/.vim/plugged')
 " Material colorscheme for Vim
 Plug 'hzchirs/vim-material'
 
+" ALE - Async linting and formatting
+Plug 'dense-analysis/ale'
+
 call plug#end()
 
 " ============================================================
@@ -91,3 +94,28 @@ set hidden                        " switch buffers without saving
 set splitbelow                    " when splitting, place new window below
 set splitright                    " vertical splits appear to the right
 " set mouse=a                     " uncomment to enable mouse support
+set textwidth=100                 " wrap at 100 columns (matches VS Code)
+set fixendofline                  " ensure files end with a newline
+set endofline                     " write the final newline
+
+" ============================================================
+" ALE (Linting + Formatting)
+" ============================================================
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+\   'python': ['ruff'],
+\   'javascript': ['eslint'],
+\   'rust': ['analyzer'],
+\}
+let g:ale_fixers = {
+\   '*': ['trim_whitespace'],
+\   'html': ['prettier'],
+\   'css': ['prettier'],
+\   'javascript': ['prettier'],
+\   'json': ['prettier'],
+\   'python': ['ruff', 'ruff_format'],
+\   'sh': ['shfmt'],
+\   'rust': ['rustfmt'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_sh_shfmt_options = '-i 2 -ci -sr'

@@ -46,6 +46,7 @@ My personal development environment configuration files. Clean, focused, and pro
 - **Search**: Smartcase, incremental search, highlighted results
 - **Clipboard**: Integrated system clipboard support when available
 - **UI**: Line numbers, cursorline, match highlighting, 256‑color support
+- **Linting/Formatting**: ALE with format-on-save (prettier, ruff, shfmt, rustfmt)
 
 All Vim configuration lives in:
 
