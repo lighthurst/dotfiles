@@ -194,6 +194,17 @@ vim +PlugInstall +qall || print_warning "Vim plugin installation skipped (non-fa
 print_success "Vim setup complete"
 
 #
+# Neovim configuration
+#
+echo "🔗 Linking Neovim configuration..."
+
+mkdir -p "$HOME/.config"
+backup_if_different "$HOME/.config/nvim" "$DOTFILES_DIR/nvim"
+
+ln -sf "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+print_success "Neovim configuration linked"
+
+#
 # Global gitignore
 #
 echo "🔗 Setting up global gitignore..."

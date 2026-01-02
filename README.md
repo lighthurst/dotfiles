@@ -56,6 +56,22 @@ All Vim configuration lives in:
 
 A symlink is created automatically during installation.
 
+### ⚡ Neovim Configuration
+
+Based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) with the following customizations:
+
+- **Arrow keys disabled** - Forces hjkl navigation habits
+- **Formatters** - prettier (html/css/js/ts/json/yaml), ruff (python), shfmt (shell), rustfmt (rust)
+- **Plugins enabled** - autopairs, neo-tree
+
+All Neovim configuration lives in:
+
+```
+~/dotfiles/nvim/
+```
+
+A symlink is created automatically during installation (`~/.config/nvim` → `~/dotfiles/nvim`).
+
 ---
 
 ## 🚀 Quick Install
@@ -105,6 +121,9 @@ dotfiles/
 │   └── config.local.example
 ├── vim/
 │   └── .vimrc
+├── nvim/
+│   ├── init.lua
+│   └── lua/
 ├── git/
 │   ├── .gitconfig
 │   ├── .gitconfig.local.example
@@ -160,6 +179,13 @@ Requires [1Password SSH Agent](https://developer.1password.com/docs/ssh/get-star
 
 ```bash
 ln -sf ~/dotfiles/vim/.vimrc ~/.vimrc
+```
+
+### Neovim
+
+```bash
+mkdir -p ~/.config
+ln -sf ~/dotfiles/nvim ~/.config/nvim
 ```
 
 ### Git
