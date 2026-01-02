@@ -24,6 +24,7 @@ My personal development environment configuration files. Clean, focused, and pro
 - **fd**: Fast file finder (find alternative)
 - **fzf**: Fuzzy finder
 - **jq**: JSON processor
+- **neovim**: Modern Vim
 - **ripgrep**: Fast grep (rg)
 - **shfmt**: Shell script formatter
 
